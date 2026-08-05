@@ -36,7 +36,7 @@ A hands-on home lab simulating a real-world enterprise Active Directory environm
 
 ## Network Topology
 
-[![Multi-Site-Active-Directory-Lab-with-VMware-pfSense](images/Topology.jpg)](images/Topology.jpg)
+[![Multi-Site-Active-Directory-Lab-with-VMware-pfSense](images/Topology.jpg)]
 
 
 

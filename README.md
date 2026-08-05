@@ -150,9 +150,7 @@ w32tm /query /status
 
 # Screenshots
 
-All screenshots inside:
-
-images
+All related screenshots are available in the images/ folder.
 
 ## Lessons Learned
 - DNS is the backbone of Active Directory

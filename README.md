@@ -36,7 +36,7 @@ A hands-on home lab simulating a real-world enterprise Active Directory environm
 
 # Network Topology
 
-[![Multi-Site Active Directory Lab Topology](/Topology.jpg)](images/Topology.jpg)
+[![Multi-Site Active Directory Lab Topology](/Topology.jpg)](/Topology.jpg)
 
 
 # What I Built

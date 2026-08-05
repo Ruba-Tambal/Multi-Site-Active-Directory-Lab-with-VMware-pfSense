@@ -1,18 +1,39 @@
-# Joining Windows Client to Mumbai Site
+# Client Configuration
 
-## Machine Details
-- **Hostname**: CL-MUMBAI-01
-- **Network**: VMnet2 (192.168.10.0/24)
-- **Role**: Domain Member (Client)
-- **Site**: LHO-BranchOffice-Mumbai
+Hostname
 
-## Steps Performed
+CL-MUMBAI-01
 
-1. Configured VMware Network Adapter → VMnet2 + Connected
-2. Assigned static IP from the Mumbai subnet (192.168.10.0/24)
-3. Set Preferred DNS to 192.168.10.11
-4. Joined the computer to domain `labshandson.lan`
-5. Verified the computer object appears in Active Directory
-6. Confirmed site association with LHO-BranchOffice-Mumbai
+Role
 
-This demonstrates proper client placement in a multi-site Active Directory environment.
+Domain Member
+
+Subnet
+
+192.168.10.0/24
+
+Gateway
+
+192.168.10.1
+
+Preferred DNS
+
+192.168.1.11
+
+---
+
+## Steps
+
+1. Connected VMware adapter to VMnet2.
+2. Assigned static IP.
+3. Configured DNS.
+4. Joined labshandson.lan.
+5. Restarted computer.
+6. Verified Active Directory object.
+7. Verified Site Association.
+
+---
+
+Result
+
+The client authenticated successfully and was placed in the Mumbai Active Directory site.

@@ -1,60 +1,163 @@
 # Multi-Site Active Directory Lab with VMware & pfSense
 
-A complete home lab project simulating a real-world multi-site Active Directory environment using VMware Workstation and pfSense as the router between sites.
+A hands-on home lab simulating a real-world enterprise Active Directory environment with multiple sites connected through pfSense routing.
+
+---
 
 ## Lab Overview
 
-| Item                    | Details                                      |
-|-------------------------|----------------------------------------------|
-| Domain                  | labshandson.lan                              |
-| Site 1                  | LHO-HeadOffice-Delhi (192.168.1.0/24)         |
-| Site 2                  | LHO-BranchOffice-Mumbai (192.168.10.0/24)     |
-| Domain Controllers      | win2k25-DC01 (192.168.1.11)<br>win2k25-DC02 (192.168.1.12)<br>win2k25-MUMBAI-DC01 (192.168.10.11) |
-| Router                  | pfSense (192.168.1.1 / 192.168.10.1)          |
-| Client in Mumbai        | **CL-MUMBAI-01** (joined to domain and placed in Mumbai site) |
-| Hypervisor              | VMware Workstation                           |
+| Item | Details |
+|------|---------|
+| Domain | labshandson.lan |
+| Head Office | LHO-HeadOffice-Delhi |
+| Branch Office | LHO-BranchOffice-Mumbai |
+| Head Office Network | 192.168.1.0/24 |
+| Mumbai Network | 192.168.10.0/24 |
+| Domain Controllers | win2k25-DC01 (192.168.1.11)<br>win2k25-DC02 (192.168.1.12)<br>win2k25-MUMBAI-DC01 (192.168.10.11) |
+| Router | pfSense |
+| Client | CL-MUMBAI-01 |
+| Hypervisor | VMware Workstation |
 
-## Technologies Used
+---
+
+# Technologies Used
 
 - Windows Server 2025
-- Active Directory Domain Services (AD DS)
-- Active Directory Sites and Services
+- Active Directory Domain Services
 - DNS
-- pfSense Firewall/Router
-- VMware Workstation (Host-only networking)
+- Active Directory Sites and Services
+- Group Policy
+- Kerberos
+- VMware Workstation
+- pfSense
 - Windows Client
 
-## Network Topology
+---
 
-## What I Built
+# Network Topology
 
-1. Configured two isolated Host-only networks in VMware (VMnet1 & VMnet2)
-2. Deployed pfSense as a router between the two subnets
-3. Promoted multiple Domain Controllers across different sites
-4. Configured Active Directory Sites and Services (Sites + Subnets)
-5. Successfully joined Windows client **CL-MUMBAI-01** to the domain and associated it with the Mumbai site
-6. Troubleshot complex replication, Kerberos, DNS, and Secure Channel issues
+```
 
-## Key Challenges & Solutions
+DC01 (192.168.1.11)
+│
+DC02 (192.168.1.12)
+│
+VMnet1
+│
+pfSense
+│
+VMnet2
+│
+Mumbai-DC (192.168.10.11)
+│
+CL-MUMBAI-01
 
-- "The target principal name is incorrect" (Kerberos error) during replication
-- Cross-subnet Domain Controller promotion
-- DNS registration failures after promotion
-- Secure Channel broken (ERROR_NO_LOGON_SERVERS)
-- Media disconnected / network connectivity issues in VMware
-- Firewall rules on pfSense blocking AD traffic
-- Time synchronization problems
-- Stale computer account after force demotion
+```
 
-## Lessons Learned
+---
 
-- Correct DNS configuration is critical for multi-site AD
-- Kerberos is highly sensitive to time differences and SPNs
-- Always configure Sites and Subnets properly
-- Force demotion can leave stale computer accounts that must be cleaned manually
-- pfSense default "Block private networks" rule on WAN can break lab traffic
-- Clients should be placed in the correct AD Site for optimal authentication
+# What I Built
 
-## Author
+- Configured two VMware Host-only networks.
+- Installed and configured pfSense.
+- Created a Multi-Site Active Directory environment.
+- Promoted three Domain Controllers.
+- Configured Active Directory Sites and Services.
+- Joined a Windows client to the domain.
+- Verified site association.
+- Configured DNS.
+- Tested Active Directory replication.
+- Troubleshot Kerberos, replication, DNS and Secure Channel issues.
 
-Built as a hands-on learning project for Active Directory, Networking, and System Administration skills.
+---
+
+# Validation Tests
+
+✔ Domain joined successfully
+
+✔ DNS resolution working
+
+✔ Active Directory replication verified
+
+✔ SYSVOL replicated successfully
+
+✔ Group Policy applied
+
+✔ Client authenticated successfully
+
+✔ Cross-site routing verified
+
+✔ Sites and Subnets configured
+
+---
+
+# Useful Commands
+
+```powershell
+repadmin /replsummary
+
+repadmin /showrepl
+
+dcdiag /v
+
+dcdiag /test:dns
+
+nltest /sc_verify:labshandson.lan
+
+nltest /dsgetdc:labshandson.lan
+
+gpresult /r
+
+ipconfig /all
+
+nslookup
+
+klist
+
+w32tm /query /status
+```
+
+---
+
+# Skills Demonstrated
+
+- Active Directory Administration
+- Multi-Site Active Directory
+- DNS Administration
+- Windows Server
+- Kerberos Authentication
+- Group Policy
+- VMware Workstation
+- pfSense Routing
+- Network Troubleshooting
+- Active Directory Replication
+
+---
+
+# Documentation
+
+| File | Description |
+|------|-------------|
+| topology.md | Network architecture |
+| installation-steps.md | Deployment steps |
+| client-mumbai.md | Client configuration |
+| troubleshooting.md | Issues and fixes |
+| replication.md | Replication validation |
+| dns.md | DNS configuration |
+| kerberos.md | Kerberos troubleshooting |
+
+---
+
+# Screenshots
+
+All screenshots inside:
+
+docs/images
+
+---
+
+Built as a practical learning project to demonstrate Active Directory, Windows Server, Networking, DNS, and System Administration skills.
+
+## Acknowledgments
+
+This lab was inspired by and built while following educational content from the Labs Hands On YouTube channel. All configuration, testing, troubleshooting, and documentation in this repository were completed as part of my personal hands-on learning journey.

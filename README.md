@@ -36,7 +36,7 @@ A hands-on home lab simulating a real-world enterprise Active Directory environm
 
 ## Network Topology
 
-![Topology](images/Topology.jpg)
+![Topology](images/Topology.png)
 
 # What I Built
 

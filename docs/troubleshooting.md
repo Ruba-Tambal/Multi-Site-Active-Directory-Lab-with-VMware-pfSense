@@ -1,22 +1,77 @@
-# Troubleshooting Log
+# Troubleshooting
 
-## Common Issues Faced
+## Kerberos Error
 
-### 1. The target principal name is incorrect (Error 2148074274 / 0x80090322)
-- Cause: Kerberos authentication failure between DCs
-- Solutions tried: Time sync, klist purge, netlogon restart, netdom resetpwd, force demotion + re-promotion
+The target principal name is incorrect
 
-### 2. ERROR_NO_LOGON_SERVERS (1311)
-- Secure Channel was broken
-- Fixed by nltest /sc_reset and proper DNS
+Cause
 
-### 3. Media disconnected on client
-- Fixed by correctly setting VMware Network Adapter to Connected + correct VMnet
+Kerberos authentication failure.
 
-### 4. Stale computer account after Force Demotion
-- Error: "An account with the same name exists... Re-using the account was blocked by security policy"
-- Solution: Deleted the computer account from Active Directory Users and Computers, then re-joined the domain
+Resolution
 
-### 5. Replication links missing (Error 8452)
-- KCC could not create replica links
-- Solved after cleaning the environment and re-promoting the DC
+- Checked time synchronization.
+- Cleared Kerberos tickets.
+- Restarted Netlogon.
+- Reset Secure Channel.
+- Re-promoted Domain Controller.
+
+---
+
+## ERROR_NO_LOGON_SERVERS
+
+Cause
+
+Broken Secure Channel.
+
+Resolution
+
+Used:
+
+nltest /sc_reset
+
+Corrected DNS configuration.
+
+---
+
+## Replication Error 8452
+
+Cause
+
+Missing replication links.
+
+Resolution
+
+Cleaned stale metadata.
+
+Forced KCC.
+
+Re-promoted Domain Controller.
+
+---
+
+## Media Disconnected
+
+Cause
+
+VMware adapter disconnected.
+
+Resolution
+
+Enabled Connected.
+
+Selected correct VMnet.
+
+---
+
+## Duplicate Computer Account
+
+Cause
+
+Force demotion left stale account.
+
+Resolution
+
+Deleted computer object.
+
+Rejoined domain.

@@ -152,7 +152,7 @@ w32tm /query /status
 
 All screenshots inside:
 
-docs/images
+images
 
 ---
 

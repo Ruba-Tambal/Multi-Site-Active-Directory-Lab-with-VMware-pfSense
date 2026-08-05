@@ -36,25 +36,8 @@ A hands-on home lab simulating a real-world enterprise Active Directory environm
 
 # Network Topology
 
-```
+[![Multi-Site Active Directory Lab Topology](images/Topology.jpg)](images/Topology.jpg)
 
-DC01 (192.168.1.11)
-│
-DC02 (192.168.1.12)
-│
-VMnet1
-│
-pfSense
-│
-VMnet2
-│
-Mumbai-DC (192.168.10.11)
-│
-CL-MUMBAI-01
-
-```
-
----
 
 # What I Built
 

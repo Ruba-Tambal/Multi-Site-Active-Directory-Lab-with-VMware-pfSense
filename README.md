@@ -154,6 +154,13 @@ All screenshots inside:
 
 images
 
+## Lessons Learned
+- DNS is the backbone of Active Directory
+- Kerberos is extremely sensitive to time and SPNs
+- Always clean stale computer accounts after forced demotion
+- Proper Sites and Subnets configuration improves authentication and replication
+- Lab environments require careful firewall and routing design
+
 ---
 
 Built as a practical learning project to demonstrate Active Directory, Windows Server, Networking, DNS, and System Administration skills.
